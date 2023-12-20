@@ -1,0 +1,30 @@
+.success {
+    color: white;
+    background: lightgreen;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+.error {
+    color: white;
+    background: tomato;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  
+  .blog {
+    padding: 5px;
+      list-style-type: none;      
+      border: solid;
+      margin-bottom: 5px;
+      border-radius: 3px;
+      background-color: lightblue;
+      line-height: 1;
+  }
