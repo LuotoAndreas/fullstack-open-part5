@@ -1,34 +1,32 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 const AddBlogForm = ({ createBlog }) => {
-  const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
-  const [url, setUrl] = useState('')
+  const [formData, setFormData] = useState({
+    title: '',
+    author: '',
+    url: '',
+  })
 
-  const handleTitleChange = (event) => {
-    setTitle(event.target.value)
+  const handleInputChange = (event) => {
+    const { name, value } = event.target
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }))
   }
 
-  const handleAuthorChange = (event) => {
-    setAuthor(event.target.value)
-  }
-
-  const handleUrlChange = (event) => {
-    setUrl(event.target.value)
-  }
   const addBlog = (event) => {
     event.preventDefault()
-    createBlog({
-      title: title,
-      author: author,
-      url: url
-    })
+    createBlog(formData)
 
-    setTitle('')
-    setAuthor('')
-    setUrl('')
+    setFormData({
+      title: '',
+      author: '',
+      url: '',
+    })
   }
+
   return (
     <div>
       <h2>create new</h2>
@@ -36,35 +34,37 @@ const AddBlogForm = ({ createBlog }) => {
         <div>
           title:
           <input
-            id = "blogFormTitle"
+            id="blogFormTitle"
             type="text"
-            value={title}
-            name="Title"
-            onChange={handleTitleChange}
+            value={formData.title}
+            name="title"
+            onChange={handleInputChange}
             required
           />
         </div>
         <div>
           author:
           <input
-            id = "blogFormAuthor"
+            id="blogFormAuthor"
             type="text"
-            value={author}
-            name="Author"
-            onChange={handleAuthorChange}
+            value={formData.author}
+            name="author"
+            onChange={handleInputChange}
           />
         </div>
         <div>
           url:
           <input
-            id = "blogFormUrl"
+            id="blogFormUrl"
             type="url"
-            value={url}
+            value={formData.url}
             name="url"
-            onChange={handleUrlChange}
+            onChange={handleInputChange}
           />
         </div>
-        <button id="blogFormCreate" type="submit">Create</button>
+        <button id="blogFormCreate" type="submit">
+          Create
+        </button>
       </form>
     </div>
   )
